@@ -1,0 +1,8 @@
+<div>
+	<h1>Welcome to SurveyCreator</h1>
+	<% if current_user %>
+	<form>
+		<%= button_to "Create Survey", {action: "create", controller: "surveys", } %>
+	</form>
+	<% end %>
+</div>
