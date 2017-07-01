@@ -1,0 +1,21 @@
+<p>Question</p>
+<p><%= @survey.name %></p>
+<% if @answers %>
+<% alpha = [*?A..?Z] %>
+	<% @answers.each_with_index do |each_answer, index| %>
+		<p> <%= alpha[index] %>) <%= each_answer.answer_name %> </p>
+	<% end %>
+<% end %>
+
+<%= form_for Answer.new, url: {action: 'create', survey_id: @survey.id} do |f| %>
+  <p>
+    <%= f.label "Answer Choice" %><br>
+    <%= f.text_field :answer_name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+  link_to "Finished Question" @survey
+<% end %>

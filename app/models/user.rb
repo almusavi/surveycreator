@@ -1,6 +1,5 @@
-class User < ApplicationRecord
-	has_many :surveys, foreign_key: :creator_id
-	has_many :surveys, foreign_key: :taker_id
+class User < ActiveRecord::Base
+	has_many :surveys
 
 	validates :email, :username, presence: true
 	validates :email, :username, uniqueness: true

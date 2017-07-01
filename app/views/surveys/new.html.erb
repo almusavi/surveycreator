@@ -1,0 +1,16 @@
+<div>
+	<% if current_user %>
+
+		<%= form_for Survey.new, url: {action: 'create', controller: "surveys", user_id: current_user.id} do |f| %>
+		<p>What is your Survey Name?</p>
+	  <p>
+	    <%= f.label "Survey Name" %><br>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
+<% end %>
+
+</div>

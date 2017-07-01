@@ -17,22 +17,21 @@ ActiveRecord::Schema.define(version: 20170629235932) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "answer_name"
-    t.string   "question_id"
+    t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "questions", force: :cascade do |t|
     t.string   "question_name"
-    t.string   "survey_id"
+    t.integer  "survey_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
-    t.string   "creator_id"
-    t.string   "taker_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

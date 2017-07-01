@@ -1,0 +1,15 @@
+
+<p>Survey: <%= @survey.name %></p>
+	<% if @questions %>
+		<% @questions.each do |each_question| %>
+		<p><%= each_question.question_name %></p>
+			<% if each_question.answers %>
+				<% each_question.answers.each do |each_answer| %>
+					<%= each_answer %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<%= link_to "edit survey", edit_survey_questions_path(each_question) %>
+	<% end %>
+	<%= link_to "Add question", new_survey_question_path(@survey)  %>
+

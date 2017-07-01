@@ -1,32 +1,25 @@
 class SurveysController < ApplicationController
   def index
-    @surveys = Survey.all
+    @questions = Questions.all
   end
 
   def new
+    @survey = Survey.find_by(id: params[:survey_id])
     
   end
 
   def create
-  	@survey = Survey.new(user_params)
-  	@survey.user_id = current_user.id
-  	p "@survey"
-  	p @survey.errors.messages
-  	p @survey.valid?
-  	p @survey
+  	@question = Question.new(user_params)
+  	@question.survey_id = current_user.id
   	if request.xhr?
-  		if @survey.save!
-  			p "in request"
+  		if @question.save!
   			erb :"/surveys/_new_survey", layout: false, local: {survey: @survey}
   		else
-  			p "in else of request"
   			erb :"surveys/_errors", layout: false, locals: {survey: @survey}
   		end
   	else
-  		if @survey.save!
-  			p "*************"
-  			p params
-  			redirect_to "/surveys/#{@survey.id}"
+  		if @question.save!
+  			redirect_to "/question/#{@question.id}"
   		else
   			render "/surveys/new"
   		end

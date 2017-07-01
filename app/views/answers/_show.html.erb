@@ -1,0 +1,7 @@
+<p><%= @survey.name %></p>
+<% if @answers %>
+	<% @answers.each do |each_answer| %>
+		<%= each_answer %>
+	<% end %>
+<% end %>
+<%= link_to "Add answer", survey_answers_path(@survey) %>

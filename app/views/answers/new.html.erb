@@ -1,0 +1,16 @@
+<p><%= @survey.name %></p>
+<% if @answers %>
+	<% @answers.each do |each_answer| %>
+	<%= each_answer.answer_name %>
+	<% end %>
+<% end %>
+<%= form_for Answer.new, url: {action: 'create'} do |f| %>
+  <p>
+    <%= f.label "Answer" %><br>
+    <%= f.text_field :answer_name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'surveys#index'
+  root 'welcome#index'
   
   #user
   get '/users/new' => 'users#new', as: 'new_user'
@@ -14,5 +16,15 @@ Rails.application.routes.draw do
   get '/sessions' => 'sessions#delete'
 
   #surveys
-  resources :surveys
+  resources :surveys do
+    #questions
+    resources :questions
+  end
+
+  get 'questions/:question_id/answers' => 'answers#index', as: "question_answers"
+  post "questions/:question_id/answers" => 'answers#create'
+  get 'questions/:question_id/answers/new' => 'answers#new', as: "new_question_answer"
+  get 'questions/:question_id/answers/:id' => 'answers#edit', as: "edit_question_answer"
+  get  'questions/:question_id/answers/:id' => "answers#show", as: "question_answer"
+  delete 'questions/:question_id/answers/:id' =>  "answers#destroy"
 end
