@@ -2,21 +2,24 @@ class AnswersController < ApplicationController
   def index
     @survey = Survey.find_by(id: params[:survey_id])
     # @answer = Answer.find_by(survey_id: @survey.id)
-    @answers = Answer.where("survey_id = ?", @survey.id)
+    @answers = Answer.where("question_id = ?", @survey.id)
     p @answers
 
   end
 
   def new
-    @survey = Survey.find_by(id: params[:survey_id])
-    @answers = Answer.where("survey_id = ?", @survey.id)
+    @question = Question.find_by(id: params[:question_id])
+    @survey = Survey.find_by(id: @question.survey_id)
+    @answers = Answer.where("question_id = ?", @question.id)
   end
 
   def create
-    @survey = Survey.find_by(id: params[:survey_id])
+    @question = Question.find_by(id: params[:question_id])
+    @survey = Survey.find_by(id: @question.survey_id)
+    @answers = Answer.where("question_id = ?", @question.id)
 
     @answer = Answer.new(user_params)
-    @answer.survey_id = @survey.id
+    @answer.question_id = @question.id
 
     if request.xhr?
       if @answer.save
@@ -26,14 +29,14 @@ class AnswersController < ApplicationController
       end
     else
       if @answer.save
-        p "it's coming to redirect"
-        redirect_to "/surveys/#{@survey.id}/answers"      
+        redirect_to "/surveys/#{@survey.id}/questions/#{@question.id}"     
       else
-        p "in the new survey"
-        render "/surveys/new"
+        render "/questions/#{@question.id}/answers/new"
       end
     end
   end
+
+
 
 private
   def user_params

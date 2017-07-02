@@ -35,7 +35,7 @@ class SurveysController < ApplicationController
 
   def show
   	@survey = Survey.find_by(id: params[:id])
-  	@answers = Answer.find_by(survey_id: @survey.id)
+  	@questions = Question.where("survey_id = ?", @survey.id)
   end
 
 

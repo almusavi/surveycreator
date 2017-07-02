@@ -1,5 +1,15 @@
 
 <% if current_user %>
+<% if @surveys %>
+	<p>Surveys you created
+	<% @surveys.each do |each_survey| %>
+		<p><%= link_to each_survey.name, survey_path(current_user)%><%=  %></p>
+	<% end %>
+	<% else %>
+	You haven't created any surveys yet
+	<% end %>
 	<%= link_to "Make a survey", new_survey_path %>
 	<%= link_to "Take a survey", @survey %>
+<% else %>
+	<p>Please log in</p>
 <% end %>

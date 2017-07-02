@@ -1,0 +1,9 @@
+<p>Survey: <%= @survey.name %></p>
+<p>Question: <%= @question.question_name %></p>
+	
+	<h1>Edit the Item</h1>
+
+  <%= form_for :question, :url => { :action => "update" }, :method => :PUT do |f| %>
+  <%= f.text_field :question_name, :value => @question.question_name%>
+  <%= f.submit "Confirm Edit" %>
+  <% end %>

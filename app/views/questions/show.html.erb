@@ -1,5 +1,12 @@
-<%= @question.question_name %>
-<%= link_to "add answer", new_question_answer_path(@question) %>
+<p>Survey: <%= @survey.name %></p>
+<p>Question: <%= @question.question_name %> <%=  link_to "edit_question", edit_survey_question_path(@question)%></p> 
+<% if @question.answers %>
+<% alpha = [*?A..?Z] %>
+	<% @question.answers.each_with_index do |each_answer, index| %>
+		<p> <%=  alpha[index]%>) <%= each_answer.answer_name %> <%=  link_to "edit_answer", edit_question_answer_path(each_answer)%></p>
+		  
+	<% end %>
 <% end %>
-<%= link_to "Add question", new_survey_question_path(@survey)  %>
+<p> <%= link_to "add answer", new_question_answer_path(@question) %></p>	
+<p> <%= link_to "complete question",  survey_path(@survey)%> </p>
 

@@ -1,4 +1,4 @@
-class SurveysController < ApplicationController
+class QuestionsController < ApplicationController
   def index
     @questions = Questions.all
   end
@@ -9,8 +9,11 @@ class SurveysController < ApplicationController
   end
 
   def create
+    @survey = Survey.find_by(id: params[:survey_id])
   	@question = Question.new(user_params)
-  	@question.survey_id = current_user.id
+  	# @question.survey_id = current_user.id
+    @question.survey_id = @survey.id
+
   	if request.xhr?
   		if @question.save!
   			erb :"/surveys/_new_survey", layout: false, local: {survey: @survey}
@@ -19,7 +22,7 @@ class SurveysController < ApplicationController
   		end
   	else
   		if @question.save!
-  			redirect_to "/question/#{@question.id}"
+  			redirect_to "/surveys/#{@question.survey_id}/questions/#{@question.id}"
   		else
   			render "/surveys/new"
   		end
@@ -27,14 +30,33 @@ class SurveysController < ApplicationController
   end
 
   def show
-  	@survey = Survey.find_by(id: params[:id])
-  	@answers = Answer.find_by(survey_id: @survey.id)
+  	@survey = Survey.find_by(id: params[:survey_id])
+    @question = Question.find_by(id: params[:id])
+  
   end
+
+  def edit
+    @survey = Survey.find_by(id: params[:survey_id])
+    p "******"
+    p @survey
+    p "******"
+
+    @question = Question.find_by(id: params[:id])
+  end
+
+  def update
+    @survey = Survey.find_by(id: params[:survey_id])
+    @question = Question.find_by(id: params[:id])
+    @question.update(user_params)
+    redirect_to @question
+
+  end
+
 
 
   private
   def user_params
-    params.require(:survey).permit(:name, :creator_id)
+    params.require(:question).permit(:question_name, :survey_id)
   end
 
 
