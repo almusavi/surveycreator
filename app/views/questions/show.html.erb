@@ -1,5 +1,6 @@
 <p>Survey: <%= @survey.name %></p>
-<p>Question: <%= @question.question_name %> <%=  link_to "edit_question", edit_survey_question_path(@question)%></p> 
+<p>Question: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit</a>
+</p> 
 <% if @question.answers %>
 <% alpha = [*?A..?Z] %>
 	<% @question.answers.each_with_index do |each_answer, index| %>

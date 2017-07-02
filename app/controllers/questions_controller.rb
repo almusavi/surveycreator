@@ -48,9 +48,17 @@ class QuestionsController < ApplicationController
     @survey = Survey.find_by(id: params[:survey_id])
     @question = Question.find_by(id: params[:id])
     @question.update(user_params)
-    redirect_to @question
+    redirect_to survey_question_url
+  end
+
+  def destroy
+       @survey = Survey.find_by(id: params[:survey_id])
+      @question = Question.find_by(id: params[:id])
+      @question.destroy
+      redirect_to survey_url
 
   end
+
 
 
 
