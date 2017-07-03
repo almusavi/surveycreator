@@ -1,5 +1,6 @@
-
-<p>Survey: <%= @survey.name %></p>
+<div class="container whitebox">
+<span class="border-0">
+<p><%= @survey.name %></p>
 	<% if @questions %>
 		<% @questions.each do |each_question| %>
 			<p>Question: <%= each_question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= each_question.id %>">edit question</a></p>
@@ -18,5 +19,8 @@
 	<% end %>
 
 	<%= link_to "Add question", new_survey_question_path(@survey)  %>
-	<a href="/surveys/<%= @survey.id  %>/showjson">complete survey</a>
+	<br>
+	<a href="/surveys/<%= @survey.id  %>/showjson">Make Survey Object</a>
+</span>
+</div>
 

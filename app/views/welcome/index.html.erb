@@ -1,6 +1,6 @@
 
 <% if current_user %>
-<% if @surveys %>
+<% if @surveys.count > 0 %>
 	<p>Surveys you created
 	<% @surveys.each do |each_survey| %>
 		<p><%= link_to each_survey.name, survey_path(current_user)%><%=  %></p>

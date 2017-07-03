@@ -1,20 +1,24 @@
-<%= form_for User.new, url: {action: 'create'} do |f| %>
-  <p>
+<div class="container whitebox">
+<span class="border-0">
+<%= form_for User.new, :html => {:class => "form-horizontal"}, url: {action: 'create'} do |f| %>
+  <div class="form-group">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
-  </p>
+  </div>
 
-   <p>
+  <div class="form-group">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="center">
+    <%= f.submit "New User", :class => "btn btn-primary"%>
+  </div>
 <% end %>
+</span>
+</div>

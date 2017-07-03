@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/"
     else
-      render :new_user
+      render 'new', status: 422
     end
   end
 

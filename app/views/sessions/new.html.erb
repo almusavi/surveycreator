@@ -1,18 +1,22 @@
+<div class="container whitebox">
+<span class="border-0">
 <%= form_for :session, url: {action: 'create'} do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
-  </p>
+  </div>
 
-   <p>
+  <div class="form-group">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="center">
+    <%= f.submit "Login", :class => "btn btn-primary"%>
+  </div>
 <% end %>
 <% if @error %>
 <p style="color:red;">Incorrect Login</p>
 <% end %>
+</span>
+</div>

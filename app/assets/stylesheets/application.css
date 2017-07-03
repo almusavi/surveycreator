@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ /*#3366cc*/
+body {
+	background-color: grey ;
+
+}
+
+.whitebox {
+	background: white;
+	padding: 25px;
+	margin-top: 25px;
+	border-radius: 25px;
+
+}

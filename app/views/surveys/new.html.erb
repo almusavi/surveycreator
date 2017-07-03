@@ -1,15 +1,15 @@
-<div>
+<div class="container whitebox">
+<span class="border-0">
 	<% if current_user %>
 
 		<%= form_for Survey.new, url: {action: 'create', controller: "surveys", user_id: current_user.id} do |f| %>
-		<p>What is your Survey Name?</p>
-	  <p>
+  	<div class="form-group">
 	    <%= f.label "Survey Name" %><br>
 	    <%= f.text_field :name %>
-	  </p>
-	  <p>
-	    <%= f.submit %>
-	  </p>
+	</div>
+  <div class="center">
+	    <%= f.submit "New Survey", :class => "btn btn-primary" %>
+	  </div>
 	<% end %>
 <% end %>
 

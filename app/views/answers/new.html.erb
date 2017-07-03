@@ -1,17 +1,23 @@
-<p><%= @survey.name %></p>
-<p><%= @question.question_name %></p>
+<div class="container whitebox">
+<span class="border-0">
+<p>Q: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit | <%= link_to "delete question", survey_question_url(@survey, @question), method: :delete  %></p></a>
+</p> 
 <% if @answers %>
-	<% @answers.each do |each_answer| %>
-	<%= each_answer.answer_name %>
-	<% end %>
+<% alpha = [*?A..?Z] %>
+	<% @answers.each_with_index do |each_answer, index| %>
+<p> <%=  alpha[index]%>) <%= each_answer.answer_name %> 
+    <a href="/questions/<%= @question.id  %>/answers/<%= each_answer.id %>/edit">edit</a> |
+    <%= link_to "delete answer", question_answer_url(@question, each_answer), method: :delete  %></p>	<% end %>
 <% end %>
 <%= form_for Answer.new, url: {action: 'create'} do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label "Answer" %><br>
     <%= f.text_field :answer_name %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="center">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
 <% end %>
+</span>
+</div>

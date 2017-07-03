@@ -1,5 +1,6 @@
-<p>Survey: <%= @survey.name %></p>
-<p>Question: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit | <%= link_to "delete question", survey_question_url(@survey, @question), method: :delete  %></p></a>
+<div class="container whitebox">
+<span class="border-0">
+<p>Q: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit | <%= link_to "delete question", survey_question_url(@survey, @question), method: :delete  %></p></a>
 </p> 
 <% if @question.answers %>
 <% alpha = [*?A..?Z] %>
@@ -13,4 +14,5 @@
 <% end %>
 <p> <%= link_to "add answer", new_question_answer_path(@question) %></p>	
 <p> <%= link_to "complete question",  survey_path(@survey)%> </p>
-
+</span>
+</div>

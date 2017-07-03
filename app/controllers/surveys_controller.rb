@@ -9,7 +9,7 @@ class SurveysController < ApplicationController
 
   def showjson
     @survey = Survey.find_by(id: params[:id])
-    render "showjson.json.jbuilder"
+    @jsonobject = render "showjson.json.jbuilder"
   end
 
   def create
