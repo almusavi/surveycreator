@@ -1,9 +1,15 @@
-<p>Survey: <%= @survey.name %></p>
-<p>Question: <%= @question.question_name %></p>
-	
-	<h1>Edit the Item</h1>
+<div class="container whitebox">
+	<span class="border-0">
+		<p>Survey: <%= @survey.name %></p>
+		<p>Question: <%= @question.question_name %></p>
 
-  <%= form_for :answer, :url => { :action => "update"}, :method => :PUT do |f| %>
-  <%= f.text_field :answer_name, :value => @answer.answer_name, :autofocus=>true%>
-  <%= f.submit "Confirm Edit" %>
-  <% end %>
+		<%= form_for :answer, :url => { :action => "update"}, :method => :PUT do |f| %>
+		  	<div class="form-group">
+			<%= f.text_field :answer_name, :value => @answer.answer_name, :autofocus=>true%>
+			</div>
+			<div class="center"></div>
+				<%= f.submit "Confirm Edit", :class => "btn btn-primary" %>
+			<div>
+		<% end %>
+  	</span>
+</div>

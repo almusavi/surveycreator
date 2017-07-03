@@ -5,7 +5,7 @@
 <% if @question.answers %>
 <% alpha = [*?A..?Z] %>
 	<% @question.answers.each_with_index do |each_answer, index| %>
-		<p> <%=  alpha[index]%>) <%= each_answer.answer_name %> 
+		<p>◎ <%= each_answer.answer_name %> 
 		<a href="/questions/<%= @question.id  %>/answers/<%= each_answer.id %>/edit">edit</a> |
 		<%= link_to "delete answer", question_answer_url(@question, each_answer), method: :delete  %></p>
 

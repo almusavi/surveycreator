@@ -12,7 +12,7 @@
 			<% alpha = [*?A..?Z] %>
 			<% if each_question.answers %>
 				<% each_question.answers.each_with_index do |each_answer, index| %>
-					<p><%=  alpha[index]%>) <%= each_answer.answer_name %> </p>
+					<p>◎ <%= each_answer.answer_name %> </p>
 				<% end %>
 			<% end %>
 	</div>
