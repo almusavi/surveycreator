@@ -36,6 +36,29 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @question = Question.find_by(id: params[:question_id])
+    @survey = Survey.find_by(id: @question.survey_id)
+    @answer = Answer.find_by(id: params[:id])
+  end
+
+  def update
+    @question = Question.find_by(id: params[:question_id])
+    @survey = Survey.find_by(id: @question.survey_id)
+    @answer = Answer.find_by(id: params[:id])
+    @answer.update(user_params)
+    redirect_to "/surveys/#{@survey.id}/questions/#{@question.id}"
+  end
+
+  def destroy
+      @question = Question.find_by(id: params[:question_id])
+      @survey = Survey.find_by(id: @question.survey_id)
+      @answer = Answer.find_by(id: params[:id])
+      @answer.destroy
+      redirect_to "/surveys/#{@survey.id}/questions/#{@question.id}"
+
+  end
+
 
 
 private

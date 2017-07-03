@@ -1,10 +1,13 @@
 <p>Survey: <%= @survey.name %></p>
-<p>Question: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit</a>
+<p>Question: <%= @question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= @question.id %>/edit">edit | <%= link_to "delete question", survey_question_url(@survey, @question), method: :delete  %></p></a>
 </p> 
 <% if @question.answers %>
 <% alpha = [*?A..?Z] %>
 	<% @question.answers.each_with_index do |each_answer, index| %>
-		<p> <%=  alpha[index]%>) <%= each_answer.answer_name %> <%=  link_to "edit_answer", edit_question_answer_path(each_answer)%></p>
+		<p> <%=  alpha[index]%>) <%= each_answer.answer_name %> 
+		<a href="/questions/<%= @question.id  %>/answers/<%= each_answer.id %>/edit">edit</a> |
+		<%= link_to "delete answer", question_answer_url(@question, each_answer), method: :delete  %></p>
+
 		  
 	<% end %>
 <% end %>

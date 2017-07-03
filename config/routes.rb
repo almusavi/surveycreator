@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   get 'questions/:question_id/answers' => 'answers#index', as: "question_answers"
   post "questions/:question_id/answers" => 'answers#create'
   get 'questions/:question_id/answers/new' => 'answers#new', as: "new_question_answer"
-  get 'questions/:question_id/answers/:id' => 'answers#edit', as: "edit_question_answer"
+  get 'questions/:question_id/answers/:id/edit' => 'answers#edit', as: "edit_question_answer"
   get  'questions/:question_id/answers/:id' => "answers#show", as: "question_answer"
   delete 'questions/:question_id/answers/:id' =>  "answers#destroy"
+  put 'questions/:question_id/answers/:id'=> "answers#update"
 end

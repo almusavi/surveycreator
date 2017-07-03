@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
        @survey = Survey.find_by(id: params[:survey_id])
       @question = Question.find_by(id: params[:id])
       @question.destroy
-      redirect_to survey_url
+      redirect_to "/surveys/#{@survey.id}"
 
   end
 
