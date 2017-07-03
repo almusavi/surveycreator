@@ -1,23 +1,23 @@
 <div class="container whitebox">
 <span class="border-0">
+<div class="linebelow">
 <p><%= @survey.name %></p>
+</div>
 	<% if @questions %>
 		<% @questions.each do |each_question| %>
-			<p>Question: <%= each_question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= each_question.id %>">edit question</a></p>
+		<div class="linebelow">
 
-
+			<p><%= each_question.question_name %> <a href="/surveys/<%= @survey.id  %>/questions/<%= each_question.id %>">edit question</a> | <%= link_to "delete question", survey_question_url(@survey, each_question), method: :delete  %>
+			</p>
 			<% alpha = [*?A..?Z] %>
 			<% if each_question.answers %>
 				<% each_question.answers.each_with_index do |each_answer, index| %>
 					<p><%=  alpha[index]%>) <%= each_answer.answer_name %> </p>
 				<% end %>
 			<% end %>
-			<%= link_to "delete question", survey_question_url(@survey, each_question), method: :delete  %>
+	</div>
 		<% end %>
-		<br>
-
 	<% end %>
-
 	<%= link_to "Add question", new_survey_question_path(@survey)  %>
 	<br>
 	<a href="/surveys/<%= @survey.id  %>/showjson">Make Survey Object</a>
