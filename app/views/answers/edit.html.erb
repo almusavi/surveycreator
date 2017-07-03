@@ -7,8 +7,8 @@
 		  	<div class="form-group">
 			<%= f.text_field :answer_name, :value => @answer.answer_name, :autofocus=>true%>
 			</div>
-			<div class="center"></div>
-				<%= f.submit "Confirm Edit", :class => "btn btn-primary" %>
+			<div class="center">
+				<%= f.submit "Confirm Edit", :class => "btn btn-primary", :autocomplete=> "off"  %>
 			<div>
 		<% end %>
   	</span>

@@ -2,12 +2,12 @@
 	<span class="border-0">
 		<p>Survey: <%= @survey.name %></p>
 		<p>Question: <%= @question.question_name %></p>
-  		<div class="form-group">
 			<%= form_for :question, :url => { :action => "update" }, :method => :PUT do |f| %>
+			 <div class="form-group">
 			<%= f.text_field :question_name, :value => @question.question_name%>
-		</div>
-		<div class="center"></div>
-			<%= f.submit "Confirm Edit", :class => "btn btn-primary" %>
+			</div>
+		<div class="center">
+			<%= f.submit "Confirm Edit", :class => "btn btn-primary", :autocomplete=> "off" %>
 		</div>
 		<% end %>
 	</span>
