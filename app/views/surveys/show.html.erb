@@ -18,4 +18,5 @@
 	<% end %>
 
 	<%= link_to "Add question", new_survey_question_path(@survey)  %>
+	<a href="/surveys/<%= @survey.id  %>/showjson">complete survey</a>
 

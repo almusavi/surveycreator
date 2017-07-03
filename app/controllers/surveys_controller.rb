@@ -7,6 +7,11 @@ class SurveysController < ApplicationController
     
   end
 
+  def showjson
+    @survey = Survey.find_by(id: params[:id])
+    render "showjson.json.jbuilder"
+  end
+
   def create
   	@survey = Survey.new(user_params)
   	@survey.user_id = current_user.id

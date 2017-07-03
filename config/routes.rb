@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  get "surveys/:id/showjson" => "surveys#showjson"
+
   get 'questions/:question_id/answers' => 'answers#index', as: "question_answers"
   post "questions/:question_id/answers" => 'answers#create'
   get 'questions/:question_id/answers/new' => 'answers#new', as: "new_question_answer"
