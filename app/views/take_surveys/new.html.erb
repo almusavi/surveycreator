@@ -1,0 +1,9 @@
+<div class="container whitebox">
+	<span class="border-0">
+		<%= @survey.name %>
+		<% @survey.questions.each do |each_question| %>
+			<%= each_question.question_name %>
+			
+			<% end %>
+	</span>
+</div>

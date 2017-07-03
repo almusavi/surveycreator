@@ -1,0 +1,9 @@
+<div class="container whitebox">
+	<span class="border-0">
+	<p>Take a Survey</p>
+	<% @surveys.each do |each_survey| %>
+	<p><a href="/take_surveys/<%= each_survey.id %>/question_answers/new"><%= each_survey.name %> by <%= (User.find_by(id: each_survey.user_id)).username %></a></p>
+	<% end %>
+
+	</span>
+</div>

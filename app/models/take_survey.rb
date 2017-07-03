@@ -1,0 +1,2 @@
+class TakeSurvey < ApplicationRecord
+end

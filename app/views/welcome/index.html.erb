@@ -1,15 +1,20 @@
+<div class="container whitebox">
+	<span class="border-0">
+		<% if current_user %>
+		<% if @surveys.count > 0 %>
+			<p>Surveys you created
+			<% @surveys.each do |each_survey| %>
+			<div class="linebelow">
+				<p><%= link_to each_survey.name, survey_path(current_user)%><%=  %></p>
+			</div>
+			<% end %>
+		<% else %>
+			You haven't created any surveys yet
+		<% end %>
+			<%= link_to "Make a survey", new_survey_path %> </a>
 
-<% if current_user %>
-<% if @surveys.count > 0 %>
-	<p>Surveys you created
-	<% @surveys.each do |each_survey| %>
-		<p><%= link_to each_survey.name, survey_path(current_user)%><%=  %></p>
-	<% end %>
-	<% else %>
-	You haven't created any surveys yet
-	<% end %>
-	<%= link_to "Make a survey", new_survey_path %>
-	<%= link_to "Take a survey", @survey %>
-<% else %>
-	<p>Please log in</p>
-<% end %>
+		<% else %>
+			<p>Please log in</p>
+		<% end %>
+	</span>
+</div>

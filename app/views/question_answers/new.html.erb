@@ -1,0 +1,16 @@
+<div class="container whitebox">
+	<span class="border-0">
+		<%= @survey.name %>
+		<br>
+		<% @survey.questions.each do |each_question| %>
+			<%= each_question.question_name %>
+			<%= form_for QuestionAnswer.new, url: {action: 'create', controller: "question_answers", survey_id: @survey.id, question_id: each_question.id, user_id: current_user.id} do |f| %>
+				<%  each_question.answers.each_with_index do |each_answer, index| %>
+					<%= f.radio_button(:answer, index) %>
+					<%= f.label(:answer, each_answer.answer_name) %>
+				<% end %>
+			<% end %>
+			<% end %>
+			<%= f.submit "Submit Answers"%> 
+	</span>
+</div>

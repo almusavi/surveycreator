@@ -30,4 +30,10 @@ Rails.application.routes.draw do
   get  'questions/:question_id/answers/:id' => "answers#show", as: "question_answer"
   delete 'questions/:question_id/answers/:id' =>  "answers#destroy"
   put 'questions/:question_id/answers/:id'=> "answers#update"
+
+
+resources :take_surveys do
+    #questions
+    resources :question_answers
+  end
 end
